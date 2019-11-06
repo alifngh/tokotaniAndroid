@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.tubes.ui.home.HomeFragment"
+        android:label="@string/menu_bibit"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_alatpertanian"
+        android:name="com.example.tubes.ui.alatpertanian.AlatpertanianFragment"
+        android:label="@string/menu_alat"
+        tools:layout="@layout/fragment_alatpertanian" />
+
+    <fragment
+        android:id="@+id/nav_transaksi"
+        android:name="com.example.tubes.ui.transaksi.TransaksiFragment"
+        android:label="@string/transaksi"
+        tools:layout="@layout/fragment_transaksi" />
+
+    <fragment
+        android:id="@+id/nav_nota"
+        android:name="com.example.tubes.ui.nota.NotaFragment"
+        android:label="@string/nota"
+        tools:layout="@layout/fragment_nota" />
+    <fragment
+        android:id="@+id/nav_hasiltani"
+        android:name="com.example.tubes.ui.hasiltani.HasiltaniFragment"
+        android:label="@string/hasil_pertanian"
+        tools:layout="@layout/fragment_hasiltani" />
+
+</navigation>
