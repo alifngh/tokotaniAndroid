@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "897208367343",
+    "firebase_url": "https://tokotani-f616f.firebaseio.com",
+    "project_id": "tokotani-f616f",
+    "storage_bucket": "tokotani-f616f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897208367343:android:30e2b4f0ed13309464431a",
+        "android_client_info": {
+          "package_name": "com.example.tubes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897208367343-6lmaqem5prfg8jskcojgbd0apt92aiuu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tubes",
+            "certificate_hash": "8fb3515fa0fdc12de05ee33e502589e0480c1780"
+          }
+        },
+        {
+          "client_id": "897208367343-kmfs5h79n4bhae2paivh0k2dreaskrlc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwVgCFcZvklb1yXFK6hfiSpdqSPc4JPhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897208367343-kmfs5h79n4bhae2paivh0k2dreaskrlc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,8 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tubes.InformasiAlat.InformasiAlat;
 import com.example.tubes.InformasiBibit.InformasiProduk;
 import com.example.tubes.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class RecyclerViewAlat extends RecyclerView.Adapter<RecyclerViewAlat.MyVi
     private Context mContext;
     private List<Alat> alats;
 
+    public List<Alat> getAlats(){
+        return alats;
+    }
     public RecyclerViewAlat(Context mContext, List<Alat> alats) {
         this.mContext = mContext;
         this.alats = alats;
@@ -38,15 +43,27 @@ public class RecyclerViewAlat extends RecyclerView.Adapter<RecyclerViewAlat.MyVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.namaAlatFr.setText(alats.get(position).getNamaAlat());
-        holder.hargaAlatFr.setText(alats.get(position).getHargaAlat());
-        holder.imageAlatFr.setImageResource(alats.get(position).getThumbnailAlat());
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        holder.namaAlatFr.setText(alats.get(position).getNama_produk());
+        holder.hargaAlatFr.setText("Rp. "+alats.get(position).getHarga_produk()+",00");
+        Picasso.get()
+                .load(alats.get(position).getUrl_gambar())
+                .placeholder(R.mipmap.ic_launcher)
+                .fit()
+                .centerCrop()
+                .into(holder.imageAlatFr);
         holder.alatParentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext , InformasiProduk.class));
+                Intent intent = new Intent(mContext, InformasiAlat.class);
+                intent.putExtra("namaAlat", getAlats().get(position).getNama_produk());
+                intent.putExtra("hargaAlat", getAlats().get(position).getHarga_produk());
+                intent.putExtra("urlGambar", getAlats().get(position).getUrl_gambar());
+                intent.putExtra("kategoriAlat", getAlats().get(position).getKategori_produk());
+                intent.putExtra("idAlat", getAlats().get(position).getId_produk());
+                intent.putExtra("tersedia", getAlats().get(position).getTersedia());
+                intent.putExtra("deskripsi", getAlats().get(position).getDeskripsi());
+                mContext.startActivity(intent);
             }
         });
     }

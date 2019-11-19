@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.tubes.ui.home.HomeFragment"
+        android:name="com.example.tubes.ui.bibit.HomeFragment"
         android:label="@string/menu_bibit"
         tools:layout="@layout/fragment_home" />
 

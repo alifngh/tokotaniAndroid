@@ -13,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tubes.InformasiBibit.InformasiProduk;
+import com.example.tubes.InformasiHasil.InformasiHasil;
 import com.example.tubes.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,6 +23,10 @@ public class RecyclerViewHasil extends RecyclerView.Adapter<RecyclerViewHasil.My
 
     private Context mContext;
     private List<Hasil> hasils;
+
+    public List<Hasil> getHasil(){
+        return hasils;
+    }
 
     public RecyclerViewHasil(Context mContext, List<Hasil> hasils) {
         this.mContext = mContext;
@@ -38,15 +44,27 @@ public class RecyclerViewHasil extends RecyclerView.Adapter<RecyclerViewHasil.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.namaHasilFr.setText(hasils.get(position).getNamaHasil());
-        holder.hargaHasilFr.setText(hasils.get(position).getHargaHasil());
-        holder.imageHasilFr.setImageResource(hasils.get(position).getThumbnailHasil());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+        holder.namaHasilFr.setText(hasils.get(position).getNama_produk());
+        holder.hargaHasilFr.setText("Rp. "+hasils.get(position).getHarga_produk()+",00");
+        Picasso.get()
+                .load(hasils.get(position).getUrl_gambar())
+                .fit()
+                .centerCrop()
+                .into(holder.imageHasilFr);
 
         holder.hasilParentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext , InformasiProduk.class));
+                Intent intent = new Intent(mContext, InformasiHasil.class);
+                intent.putExtra("namaHasil", getHasil().get(position).getNama_produk());
+                intent.putExtra("hargaHasil", getHasil().get(position).getHarga_produk());
+                intent.putExtra("urlGambar", getHasil().get(position).getUrl_gambar());
+                intent.putExtra("kategoriHasil", getHasil().get(position).getKategori_produk());
+                intent.putExtra("idHasil", getHasil().get(position).getId_produk());
+                intent.putExtra("tersedia", getHasil().get(position).getTersedia());
+                intent.putExtra("deskripsi", getHasil().get(position).getDeskripsi());
+                mContext.startActivity(intent);
             }
         });
     }
